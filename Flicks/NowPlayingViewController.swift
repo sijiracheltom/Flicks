@@ -39,6 +39,7 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
         networkErrorView.textAlignment = NSTextAlignment.center
         networkErrorView.font = UIFont.boldSystemFont(ofSize: 17.0)
         self.view.addSubview(networkErrorView)
+        networkErrorView.isHidden = true
         
         fetchMovies()
         
@@ -52,6 +53,8 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
     func fetchMovies() {
         let successCompletionBlock: ([NSDictionary]) -> Void = {[weak self] nowPlayingMoviesList in
             
+            self?.networkErrorView.isHidden = true
+            
             // Hide HUD once the network request comes back (must be done on main UI thread)
             DispatchQueue.main.async {
                 MBProgressHUD.hide(for: (self?.nowPlayingTableView)!, animated: true)
@@ -63,8 +66,10 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
             self?.refreshControl.endRefreshing()
         }
         
-        let errorCompletionBlock: (Error?) -> Void = { error in
+        let errorCompletionBlock: (Error?) -> Void = {[weak self] error in
             if let error = error {
+                self?.networkErrorView.isHidden = false
+                self?.refreshControl.endRefreshing()
                 print(error)
             } else {
                 print("Error is nil, but error closure was called?")
