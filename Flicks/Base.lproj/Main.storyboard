@@ -65,12 +65,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="UlJ-Zs-PDi">
                         <nil key="title"/>
+                        <connections>
+                            <outlet property="titleView" destination="rzT-OQ-N4v" id="nZu-Ll-sK1"/>
+                        </connections>
                     </navigationItem>
                     <connections>
                         <outlet property="nowPlayingTableView" destination="REG-0M-tP0" id="Yuk-pA-Epc"/>
+                        <outlet property="searchBar" destination="rzT-OQ-N4v" id="bJA-dn-8za"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="rzT-OQ-N4v">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </objects>
             <point key="canvasLocation" x="1295" y="154"/>
         </scene>

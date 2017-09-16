@@ -10,9 +10,10 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var nowPlayingTableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     
     var nowPlayingMoviesDict: [NSDictionary] = []
     var refreshControl : UIRefreshControl!
@@ -27,6 +28,7 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
         
         nowPlayingTableView.delegate = self
         nowPlayingTableView.dataSource = self
+        searchBar.delegate = self
         
         // Initialize network error UI
         networkErrorView = UILabel(frame: self.nowPlayingTableView.frame)
