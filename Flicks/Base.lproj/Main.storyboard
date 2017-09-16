@@ -12,7 +12,7 @@
         <!--Now Playing View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NowPlayingViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="NowPlayingViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="154"/>
+            <point key="canvasLocation" x="1295" y="154"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="dPt-TH-DhR">
@@ -119,12 +119,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g19-eY-QvZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1251" y="136"/>
+            <point key="canvasLocation" x="1877" y="136"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="i5l-tU-n6L">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6hA-AE-26M" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="dka-7r-hpH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DZL-Ax-mgY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -137,7 +138,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3kC-9c-Ol6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="85.5" y="154.5"/>
+            <point key="canvasLocation" x="711" y="154"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
