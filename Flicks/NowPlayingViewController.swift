@@ -17,14 +17,28 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
     var nowPlayingMoviesDict: [NSDictionary] = []
     var refreshControl : UIRefreshControl!
     var initialLoad : Bool! = true
+    var networkErrorView : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         nowPlayingTableView.backgroundColor = UIColor(red: 250.0/255, green: 180.0/255, blue: 46.0/255, alpha: 0.7)
+        self.navigationController!.navigationBar.backgroundColor = UIColor(red: 250.0/255, green: 180.0/255, blue: 46.0/255, alpha: 0.7)
         
         nowPlayingTableView.delegate = self
-        nowPlayingTableView.dataSource = self        
+        nowPlayingTableView.dataSource = self
+        
+        // Initialize network error UI
+        networkErrorView = UILabel(frame: self.nowPlayingTableView.frame)
+        networkErrorView.frame.origin.y += self.navigationController!.navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
+        networkErrorView.frame.size.height = 40
+        networkErrorView.backgroundColor = UIColor.darkGray
+        networkErrorView.alpha = 0.95
+        networkErrorView.text = "Network Error!"
+        networkErrorView.textColor = UIColor.white
+        networkErrorView.textAlignment = NSTextAlignment.center
+        networkErrorView.font = UIFont.boldSystemFont(ofSize: 17.0)
+        self.view.addSubview(networkErrorView)
         
         fetchMovies()
         
