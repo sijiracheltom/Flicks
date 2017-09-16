@@ -13,6 +13,7 @@ import MBProgressHUD
 class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var nowPlayingTableView: UITableView!
+    
     var nowPlayingMoviesDict: [NSDictionary] = []
     var refreshControl : UIRefreshControl!
     var initialLoad : Bool! = true
@@ -20,7 +21,6 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 250.0/255, green: 180.0/255, blue: 46.0/255, alpha: 0.7)
         nowPlayingTableView.backgroundColor = UIColor(red: 250.0/255, green: 180.0/255, blue: 46.0/255, alpha: 0.7)
         
         nowPlayingTableView.delegate = self
@@ -138,7 +138,7 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
         movieDetailVC.movieDescriptionStr = movieDescription
         movieDetailVC.movieTitleStr = movieTitle
         
-        if let movieBackgroundURL = movie["backdrop_path"] as? String {
+        if let movieBackgroundURL = movie["poster_path"] as? String {
             let movieBaseUrl = "http://image.tmdb.org/t/p/w500" as String
             let movieUrl = URL(string: movieBaseUrl + movieBackgroundURL)!
             print("Back drop: /(movieUrl)")

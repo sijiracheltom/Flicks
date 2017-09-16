@@ -23,8 +23,6 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor(red: 250.0/255, green: 180.0/255, blue: 46.0/255, alpha: 0.7)
         
         movieDetailsScrollView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
         
@@ -39,8 +37,9 @@ class MovieDetailViewController: UIViewController {
         movieDescription.sizeToFit()
         movieTitle.sizeToFit()
         
-        var size = movieDetailsScrollView.contentSize
-        size.height = movieDescription.frame.size.height + movieDescription.frame.size.height
+        let padding : CGFloat = 8.0 * 2
+        var size = movieDetailsScrollView.frame.size
+        size.height = movieTitle.frame.size.height + movieDescription.frame.size.height + padding
         movieDetailsScrollView.contentSize = size
     }
 
