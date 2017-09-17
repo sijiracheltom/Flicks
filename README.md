@@ -32,13 +32,16 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://user-images.githubusercontent.com/1326734/30522119-18d6a7aa-9b99-11e7-8a64-adb913ff103e.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+- Using storyboard was the most challenging part of building this app. It’s really useful to quickly prototype easy UI, but otherwise, it’s a little tricky to use. 
+- I could not figure out how to add the network error view using Storyboard! It would end up over the navigationController, or just took up all of the tableview space, or would end up being the first cell of the table view. I laid it out manually at the end.
+- I lost my storyboard changes when I was trying to merge upstream and my local changes. I think Xcode reverted my changes, and I ended up with a brand new storyboard? But thankfully, it’s really easy to hook things up again!
 
 ## License
 
