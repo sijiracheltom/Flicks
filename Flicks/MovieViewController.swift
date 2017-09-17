@@ -108,16 +108,16 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return movieName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         })
         
-        self.nowPlayingTableView.reloadData()
+        nowPlayingTableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = false
-        self.searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
     }
     
     // MARK:- Table view data source methods
@@ -181,6 +181,9 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()        
         
         let movieDetailVC = segue.destination as! MovieDetailViewController
         let indexPath = nowPlayingTableView.indexPath(for: sender as! MovieTableViewCell)!
