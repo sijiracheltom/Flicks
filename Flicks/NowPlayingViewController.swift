@@ -19,6 +19,8 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
     var refreshControl : UIRefreshControl!
     var initialLoad : Bool! = true
     var networkErrorView : UILabel!
+    var isNowPlayingVC : Bool! = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +131,14 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func fetchMovies(successCallBack: @escaping ([NSDictionary]) -> (), errorCallBack: ((Error?) -> ())?) {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed" // From the assignment URL
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        
+        let url : URL!
+        if isNowPlayingVC {
+            url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        } else {
+            url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=\(apiKey)")!
+        }
+        
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in

@@ -119,7 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				7496A1681F6CD12B00E3ACF2 /* MovieDetailViewController.swift */,
-				7496A1631F6CD0C300E3ACF2 /* NowPlaying */,
+				7496A1641F6CD12100E3ACF2 /* NowPlayingTableViewCell.swift */,
+				7496A1651F6CD12100E3ACF2 /* NowPlayingViewController.swift */,
 				742DBA7E1F6B09AB00FD3EC1 /* AppDelegate.swift */,
 				742DBA821F6B09AB00FD3EC1 /* Main.storyboard */,
 				742DBA851F6B09AB00FD3EC1 /* Assets.xcassets */,
@@ -145,15 +146,6 @@
 				742DBAA01F6B09AB00FD3EC1 /* Info.plist */,
 			);
 			path = FlicksUITests;
-			sourceTree = "<group>";
-		};
-		7496A1631F6CD0C300E3ACF2 /* NowPlaying */ = {
-			isa = PBXGroup;
-			children = (
-				7496A1641F6CD12100E3ACF2 /* NowPlayingTableViewCell.swift */,
-				7496A1651F6CD12100E3ACF2 /* NowPlayingViewController.swift */,
-			);
-			name = NowPlaying;
 			sourceTree = "<group>";
 		};
 		7CE6870AB9C698F69AF1676C /* Frameworks */ = {

@@ -23,16 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         // Set up the first View Controller
-        let nowPlayingVC = storyboard.instantiateViewController(withIdentifier: "ListViewControllerID") as! UINavigationController
-        nowPlayingVC.tabBarItem.title = "Now Playing"
+        let nowPlayingNC = storyboard.instantiateViewController(withIdentifier: "ListViewControllerID") as! UINavigationController
+        nowPlayingNC.tabBarItem.title = "Now Playing"
+        let nowPlayingVC = nowPlayingNC.topViewController as! NowPlayingViewController
+        nowPlayingVC.isNowPlayingVC = true
         
         // Set up the second View Controller
-        let topRatedVC = storyboard.instantiateViewController(withIdentifier: "ListViewControllerID") as! UINavigationController
-        topRatedVC.tabBarItem.title = "Top Rated"
-        
+        let topRatedNC = storyboard.instantiateViewController(withIdentifier: "ListViewControllerID") as! UINavigationController
+        topRatedNC.tabBarItem.title = "Top Rated"
+        let topRatedVC = topRatedNC.topViewController as! NowPlayingViewController
+        topRatedVC.isNowPlayingVC = false
+                
         // Set up the Tab Bar Controller to have two tabs
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [nowPlayingVC, topRatedVC]
+        tabBarController.viewControllers = [nowPlayingNC, topRatedNC]
         
         // Make the Tab Bar Controller the root view controller
         window?.rootViewController = tabBarController
