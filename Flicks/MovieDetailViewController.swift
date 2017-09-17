@@ -37,7 +37,7 @@ class MovieDetailViewController: UIViewController {
         movieDescription.sizeToFit()
         movieTitle.sizeToFit()
         
-        let padding : CGFloat = 8.0 * 2
+        let padding : CGFloat = 8.0 * 5
         var size = movieDetailsScrollView.frame.size
         size.height = movieTitle.frame.size.height + movieDescription.frame.size.height + padding
         movieDetailsScrollView.contentSize = size

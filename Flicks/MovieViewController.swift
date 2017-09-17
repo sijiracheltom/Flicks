@@ -140,7 +140,6 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let movieIconURL = movie["poster_path"] as? String {
             let movieBaseUrl = "http://image.tmdb.org/t/p/w500" as String
             let movieUrl = URL(string: movieBaseUrl + movieIconURL)!
-            print(movieUrl)
             cell.nowPlayingMovieImageView.setImageWith(movieUrl, placeholderImage: UIImage.init(named: "movieIcon"))
         } else {
             // No poster image. Can either set to nil (no image) or a default movie poster image
@@ -198,7 +197,6 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let movieBackgroundURL = movie["poster_path"] as? String {
             let movieBaseUrl = "http://image.tmdb.org/t/p/w500" as String
             let movieUrl = URL(string: movieBaseUrl + movieBackgroundURL)!
-            print("Back drop: /(movieUrl)")
             movieDetailVC.backdropURL = movieUrl
         } else {
             // No poster image. Can either set to nil (no image) or a default movie poster image
