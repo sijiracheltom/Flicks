@@ -25,13 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set up the first View Controller
         let nowPlayingNC = storyboard.instantiateViewController(withIdentifier: "ListViewControllerID") as! UINavigationController
         nowPlayingNC.tabBarItem.title = "Now Playing"
-        let nowPlayingVC = nowPlayingNC.topViewController as! NowPlayingViewController
+        let nowPlayingVC = nowPlayingNC.topViewController as! MovieViewController
         nowPlayingVC.isNowPlayingVC = true
         
         // Set up the second View Controller
         let topRatedNC = storyboard.instantiateViewController(withIdentifier: "ListViewControllerID") as! UINavigationController
         topRatedNC.tabBarItem.title = "Top Rated"
-        let topRatedVC = topRatedNC.topViewController as! NowPlayingViewController
+        let topRatedVC = topRatedNC.topViewController as! MovieViewController
         topRatedVC.isNowPlayingVC = false
                 
         // Set up the Tab Bar Controller to have two tabs

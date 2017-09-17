@@ -1,5 +1,5 @@
 //
-//  NowPlayingViewController.swift
+//  MovieViewController.swift
 //  Flicks
 //
 //  Created by Siji Rachel Tom on 9/14/17.
@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var nowPlayingTableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
