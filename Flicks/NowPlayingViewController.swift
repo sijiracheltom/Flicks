@@ -107,7 +107,7 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
         let movieTitle = movie["title"] as! String
         let movieDescription = movie["overview"] as! String
         
-        let cell = nowPlayingTableView.dequeueReusableCell(withIdentifier: "NowPlayingTableViewCell") as! NowPlayingTableViewCell
+        let cell = nowPlayingTableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell") as! MovieTableViewCell
         cell.nowPlayingMovieTitle.text = movieTitle
         cell.nowPlayingMovieDescription.text = movieDescription
         cell.contentView.backgroundColor = UIColor(red: 250.0/255, green: 180.0/255, blue: 46.0/255, alpha: 0.7)
@@ -159,7 +159,7 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let movieDetailVC = segue.destination as! MovieDetailViewController
-        let indexPath = nowPlayingTableView.indexPath(for: sender as! NowPlayingTableViewCell)!
+        let indexPath = nowPlayingTableView.indexPath(for: sender as! MovieTableViewCell)!
         let movie = nowPlayingMoviesDict[indexPath.row]
         
         let movieDescription = movie["overview"] as! String

@@ -1,5 +1,5 @@
 //
-//  NowPlayingTableViewCell.swift
+//  MovieTableViewCell.swift
 //  Flicks
 //
 //  Created by Siji Rachel Tom on 9/14/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NowPlayingTableViewCell: UITableViewCell {
+class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nowPlayingMovieImageView: UIImageView!
     
