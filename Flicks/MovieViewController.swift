@@ -16,6 +16,8 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var searchBar: UISearchBar!
     
     var nowPlayingMoviesDict: [NSDictionary] = []
+    var filteredMoviesDict: [NSDictionary] = []
+    
     var refreshControl : UIRefreshControl!
     var initialLoad : Bool! = true
     var networkErrorView : UILabel!
@@ -65,6 +67,8 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
             self?.nowPlayingMoviesDict = nowPlayingMoviesList
+            self?.filteredMoviesDict = nowPlayingMoviesList
+            
             self?.nowPlayingTableView.reloadData()
             // Tell the refreshControl to stop spinning
             self?.refreshControl.endRefreshing()
@@ -89,21 +93,41 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
         fetchMovies(successCallBack: successCompletionBlock, errorCallBack: errorCompletionBlock)
     }
     
-    // Makes a network request to get updated data
-    // Updates the tableView with the new data
-    // Hides the RefreshControl
+    
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        // Clear the search bar
+        searchBar.text = nil
         fetchMovies()
+    }
+    
+    // MARK:- Search Bar methods
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredMoviesDict = searchText.isEmpty ? nowPlayingMoviesDict : nowPlayingMoviesDict.filter({ (movieDict : NSDictionary) -> Bool in
+            let movieName = movieDict["title"] as! String
+            return movieName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        })
+        
+        self.nowPlayingTableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = false
+        self.searchBar.resignFirstResponder()
     }
     
     // MARK:- Table view data source methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nowPlayingMoviesDict.count
+        return filteredMoviesDict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let movie = nowPlayingMoviesDict[indexPath.row]
+        let movie = filteredMoviesDict[indexPath.row]
         let movieTitle = movie["title"] as! String
         let movieDescription = movie["overview"] as! String
         
@@ -160,7 +184,7 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let movieDetailVC = segue.destination as! MovieDetailViewController
         let indexPath = nowPlayingTableView.indexPath(for: sender as! MovieTableViewCell)!
-        let movie = nowPlayingMoviesDict[indexPath.row]
+        let movie = filteredMoviesDict[indexPath.row]
         
         let movieDescription = movie["overview"] as! String
         let movieTitle = movie["title"] as! String
